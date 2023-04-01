@@ -16,6 +16,11 @@ body {
   font-family: 'Rubik', sans-serif;
 }
 
+h1 {
+  padding: 0;
+  margin: 0.3rem;
+}
+
 .widget {
   background-color: transparent;
   position: absolute;
@@ -37,14 +42,19 @@ body {
   border-top-right-radius: 20px;
   background: var(--weatherIconColor);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  font-size: 1.2rem;
 }
 
+
+
 .img {
-  width: 80px;
+  width: 100px;
   user-select: none;
+  filter: drop-shadow(4px 2px 4px #000000);
 }
+
 
 
 .weatherInfo {
@@ -76,10 +86,15 @@ body {
   justify-content: center;
 }
 
-.weatherCondition {
+.country {
   text-transform: uppercase;
   font-size: 28px;
-  font-weight: 100;
+  font-weight: bold;
+}
+
+.span {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .place {
@@ -120,6 +135,90 @@ li {
   font-size: 1.2rem;
 }
 
+.btn{
+  font-family: 'Rubik', sans-serif;
+  background-color: rgba(255, 255, 255, 0.801);
+  border-radius: 0.4rem;
+  border: 0;
+  width: 100px;
+  height: 34px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.btn:hover{
+  background-color: rgba(212, 212, 212, 0.849);
+}
+
+/* SPINER */
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgb(0, 0, 0);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
 @media (min-width: 630px) {
 
   .widget {
@@ -143,10 +242,12 @@ li {
     align-items: center;
   }
 
-  .weatherCondition {
-    text-transform: uppercase;
+  .country {
     font-size: 20px;
-    font-weight: 100;
+  }
+
+  .img {
+    width: 120px;
   }
 
   .temperature {

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
 import WeatherCard from "./components/WeatherCard";
+import Loading from "./components/Loading";
 
 function App() {
   const [latLon, setLatLon] = useState();
@@ -35,8 +36,13 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Clima</h1>
-      <WeatherCard weather={weather}/>
+      {
+        weather
+        ?
+        <WeatherCard weather={weather}/>
+        :
+        <Loading />
+      }
     </div>
   );
 }
