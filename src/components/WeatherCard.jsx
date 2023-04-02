@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const WeatherCard = ({ weather }) => {
   const imgUrl = `https://openweathermap.org/img/wn/${weather?.weather[0].icon}@4x.png`;
@@ -7,16 +7,23 @@ const WeatherCard = ({ weather }) => {
   const fahrenheit = (celsius * 1.8 + 32).toFixed(0);
 
   const [temp, setTemp] = useState(true);
+
+  const [show, setShow] = useState(false);
+
   const chanceTemp = () => setTemp(!temp);
 
+  setTimeout(() => {
+    setShow(true);
+  }, 100);
+  
   return (
     <>
       <article className="widget">
-        <div className="weatherIcon">
+        <div className="weatherIcon" >
           <h1>Weather App</h1>
           <img className="img" src={imgUrl} alt="" />
         </div>
-        <div className="weatherInfo">
+        <div className={`weatherInfo ${show ? 'show' : ''}`}>
           <div className="temperature">
             {temp ? <span>{celsius}°C</span> : <span>{fahrenheit}°F</span>}
           </div>
@@ -27,19 +34,23 @@ const WeatherCard = ({ weather }) => {
             <div className="place">"{weather?.weather[0].description}"</div>
             <ul>
               <li>
-                Wind Speed: <span className="span">{weather?.wind.speed}m/s</span>
+                Wind Speed:{" "}
+                <span className="span">{weather?.wind.speed}m/s</span>
               </li>
               <li>
                 Clouds: <span className="span">{weather?.clouds.all}%</span>
               </li>
               <li>
-                Pressure: <span className="span">{weather?.main.pressure}hPa</span>
+                Pressure:{" "}
+                <span className="span">{weather?.main.pressure}hPa</span>
               </li>
             </ul>
           </div>
         </div>
-        <div className="space__btn">
-          <button className="btn" onClick={chanceTemp}>Change to {temp ? "°F" : "°C"}</button>
+        <div className={`space__btn ${show ? 'show' : ''}`} >
+          <button className="btn" onClick={chanceTemp}>
+            Change to {temp ? "°F" : "°C"}
+          </button>
         </div>
       </article>
     </>
