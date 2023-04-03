@@ -22,6 +22,35 @@ h1 {
   user-select: none;
 }
 
+
+
+.cont__input{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type=text]{
+  width: 100%;
+  height: 34px;
+  padding: 12px 20px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.data__filter{
+  color: white;
+}
+
+.form{
+  display: flex;
+  gap: 0.5rem;
+}
+
 .widget {
   background-color: transparent;
   position: absolute;
@@ -181,6 +210,23 @@ li {
 
 .btn:hover {
   background-color: rgba(212, 212, 212, 0.849);
+}
+
+
+.error__location{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.452);
+  width: 300px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem 0 0 0;
 }
 
 /* SPINER */
