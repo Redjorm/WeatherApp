@@ -55,16 +55,6 @@ function App() {
     }
   }, [latLon]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const country = e.target.country.value;
-    if (country.trim().length > 0) {
-      setnameLocation(country.trim().replace(/ /g, "%20").toLowerCase());
-    } else {
-      setnameLocation("venezuela%20caracas%20el%20valle");
-    }
-  };
-
   useEffect(() => {
     if (nameLocation) {
       const apiKey = "pk.f8f5cdbdad2222080b5a9ef907a80781";
@@ -95,14 +85,24 @@ function App() {
     }
   }, [nameLocation]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const country = e.target.country.value;
+    if (country.trim().length > 0) {
+      setnameLocation(country.trim().replace(/ /g, "%20").toLowerCase());
+    } else {
+      setnameLocation("venezuela%20caracas%20el%20valle");
+    }
+  };
+
   return (
     <div className="App">
       <div className="cont__input">
         <form className="form" onSubmit={handleSubmit}>
-          <input type="text" id="country" placeholder="Enter an address"/>
+          <input type="text" id="country" placeholder="Enter an address" />
           <button className="btn">search</button>
         </form>
-        {hasLocation && 
+        {hasLocation && (
           <div className="data__filter">
             <ul>
               <li>Name: {location.display_name}</li>
@@ -110,10 +110,10 @@ function App() {
               <li>Longitude: {location.lon}</li>
             </ul>
           </div>
-        }
-        {hasErrorLocationIq && 
-        <p class="error__location">❌ This location is not found</p>
-        }
+        )}
+        {hasErrorLocationIq && (
+          <p class="error__location">❌ This location is not found</p>
+        )}
       </div>
 
       {weather ? (

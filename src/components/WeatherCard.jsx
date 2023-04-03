@@ -15,6 +15,9 @@ const WeatherCard = ({ weather }) => {
   setTimeout(() => {
     setShow(true);
   }, 100);
+
+
+  document.body.style.backgroundImage = "url('/images/" + weather?.weather[0].icon + ".jpg')";
   
   return (
     <>
