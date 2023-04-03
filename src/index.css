@@ -44,7 +44,7 @@ input[type=text]{
 
 .data__filter{
   color: white;
-  background-color: rgba(53, 52, 52, 0.466);
+  background-color: rgba(53, 52, 52, 0.76);
   padding: 0.5rem;
   border-radius: 0.5rem;
   z-index: 6000;
