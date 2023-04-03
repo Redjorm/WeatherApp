@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import WeatherCard from "./components/WeatherCard";
 import Loading from "./components/Loading";
+import ErrorGeolocation from "./components/ErrorGeolocation";
 
 function App() {
   const [latLon, setLatLon] = useState();
   const [weather, setWeather] = useState();
+  const [geoError, setGeoError] = useState(false);
 
   useEffect(() => {
     const success = (pos) => {
@@ -17,10 +19,22 @@ function App() {
       setLatLon(obj);
     };
 
-    const error = () => {};
+    const error = (error) => {
+      console.log(error);
+      setGeoError(true);
+    };
 
-    navigator.geolocation.getCurrentPosition(success, error);
+    const options = {
+      enableHightAccuracy: true,
+      timeout: 10000,
+      maximunAge: 0
+    }
+    
+    
+    navigator.geolocation.getCurrentPosition(success, error, options);
   }, []);
+
+  
 
   useEffect(() => {
     if (latLon) {
@@ -39,9 +53,10 @@ function App() {
       {
         weather
         ?
-        <WeatherCard weather={weather}/>
+        <WeatherCard weather={weather}/> 
         :
-        <Loading />
+        geoError ? <ErrorGeolocation /> : <Loading />
+        
       }
     </div>
   );

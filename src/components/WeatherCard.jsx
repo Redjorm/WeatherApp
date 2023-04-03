@@ -8,9 +8,9 @@ const WeatherCard = ({ weather }) => {
 
   const [temp, setTemp] = useState(true);
 
-  const [show, setShow] = useState(false);
-
   const chanceTemp = () => setTemp(!temp);
+
+  const [show, setShow] = useState(false);
 
   setTimeout(() => {
     setShow(true);
