@@ -44,6 +44,10 @@ input[type=text]{
 
 .data__filter{
   color: white;
+  background-color: rgba(53, 52, 52, 0.466);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  z-index: 6000;
 }
 
 .data__filter li{
